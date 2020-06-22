@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\Product\ProductResource;
 use App\Model\Product;
+use App\Http\Resources\Product\ProductCollection;
 
 use Illuminate\Http\Request;
+
+
+use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends Controller
 {
@@ -18,7 +22,7 @@ class ProductController extends Controller
     {
         //
        // return Product::all();
-        return ProductCollection::collection(Product::all());
+        return ProductCollection::collection(Product::paginate(20));
     }
 
     /**
